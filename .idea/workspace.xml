@@ -9,19 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4512d213-15a6-4a57-9ca9-71ad7878db26" name="Changes" comment="2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/LessonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Lesson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/LessonRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/LessonRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/LessonService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/service/serviceImpl/LessonServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/lesson/addLesson.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/lesson/lessons.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/lesson/updateLesson.html" afterDir="false" />
+    <list default="true" id="4512d213-15a6-4a57-9ca9-71ad7878db26" name="Changes" comment="3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/StudyFormat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/StudentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/StudentRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/api/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/api/CompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/model/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/model/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/CourseRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/CourseRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/InstructorRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/peaksoft/repository/repositoryImpl/InstructorRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/company/addCompany.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/company/addCompany.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/company/all_companies.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/company/all_companies.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/company/updateCompany.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/company/updateCompany.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +30,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -168,7 +168,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669023138031</updated>
-      <workItem from="1669023139483" duration="25613000" />
+      <workItem from="1669023139483" duration="34485000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1669103821112</created>
@@ -184,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669109691528</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="3">
+      <created>1669114424665</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669114424665</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +211,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />
     <MESSAGE value="2" />
-    <option name="LAST_COMMIT_MESSAGE" value="2" />
+    <MESSAGE value="3" />
+    <option name="LAST_COMMIT_MESSAGE" value="3" />
   </component>
 </project>

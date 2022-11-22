@@ -41,7 +41,7 @@ public class Group {
         courses.add(course);
     }
 
-    /*@OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "groups")
+    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "groups")
     private List<Student> students;
 
     public void addStudent(Student student){
@@ -50,7 +50,7 @@ public class Group {
         }
         students.add(student);
         this.getCompany().plusStudent();
-    }*/
+    }
 
     @ManyToOne(cascade = {MERGE, PERSIST, DETACH, REFRESH}, fetch = FetchType.EAGER)
     private Company company;

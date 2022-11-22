@@ -22,7 +22,8 @@ public class InstructorRepositoryImpl implements InstructorRepository {
 
     @Override
     public List<Instructor> getAllInstructor(Long courseId) {
-        return entityManager.createQuery("select g from Instructor g where g.course.id = :id", Instructor.class).setParameter("id", courseId).getResultList();
+        return entityManager.createQuery("select g from Instructor g where g.course.id = :id", Instructor.class)
+                .setParameter("id", courseId).getResultList();
     }
 
     @Override
