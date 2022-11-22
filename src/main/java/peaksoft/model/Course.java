@@ -72,7 +72,7 @@ public class Course {
         instructor.plusStudent(this);
     }*/
 
-   /* @OneToMany(cascade = {DETACH, PERSIST, REFRESH, MERGE}, fetch = LAZY, mappedBy = "course")
+    @OneToMany(cascade = {DETACH, PERSIST, REFRESH, MERGE}, fetch = LAZY, mappedBy = "course")
     private List<Lesson> lessons;
 
     public void addLesson(Lesson lesson){
@@ -80,7 +80,7 @@ public class Course {
             lessons=new ArrayList<>();
         }
         lessons.add(lesson);
-    }*/
+    }
 
 
 
