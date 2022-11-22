@@ -28,6 +28,11 @@ public class CompanyServiceImpl implements CompanyService {
         companyRepository.addCompany(company);
     }
 
+//    @Override
+//    public int countStudent(Long id) {
+//        return companyRepository.countStudent(id);
+//    }
+
     @Override
     public Company getCompanyById(Long id) {
         return companyRepository.getCompanyById(id);

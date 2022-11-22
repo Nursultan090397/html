@@ -40,10 +40,15 @@ public class Course {
     @ManyToOne(cascade = {MERGE, DETACH, REFRESH, PERSIST}, fetch = FetchType.EAGER)
     private Company company;
 
-    @ManyToMany(cascade = {MERGE, DETACH, REFRESH}, fetch = LAZY, mappedBy = "courses")
+    @ManyToMany(cascade = {MERGE, DETACH, REFRESH}, fetch = LAZY)
+    @JoinTable(
+            name = "groups_courses",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id"))
     private List<Group> groups;
 
-    public void addGroups(Group group){
+
+    public void addGroup(Group group){
         if (groups==null){
             groups=new ArrayList<>();
         }
@@ -52,13 +57,20 @@ public class Course {
 
     @OneToMany(cascade = {ALL},fetch = LAZY, mappedBy = "course")
     private List<Instructor> instructors;
-
     public void addInstructors(Instructor instructor){
         if (instructors==null){
             instructors=new ArrayList<>();
         }
         instructors.add(instructor);
     }
+
+    /*public void addInstructors(Instructor instructor){
+        if (instructors==null){
+            instructors=new ArrayList<>();
+        }
+        instructors.add(instructor);
+        instructor.plusStudent(this);
+    }*/
 
    /* @OneToMany(cascade = {DETACH, PERSIST, REFRESH, MERGE}, fetch = LAZY, mappedBy = "course")
     private List<Lesson> lessons;
@@ -68,8 +80,8 @@ public class Course {
             lessons=new ArrayList<>();
         }
         lessons.add(lesson);
-    }
-*/
+    }*/
+
 
 
 }

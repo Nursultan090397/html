@@ -1,15 +1,12 @@
 package peaksoft.service;
 
-import peaksoft.model.Course;
 import peaksoft.model.Group;
 
 import java.util.List;
 
 public interface GroupService {
-
     List<Group> getAllGroup(Long id);
-
-    List <Group> getAllGroupsByCourseId(Long courseId);
+    List<Group> getAllGroupsByCourseId(Long courseId);
 
     void addGroup(Long id, Group group);
 
@@ -19,7 +16,5 @@ public interface GroupService {
 
     void deleteGroup(Long id);
 
-    void assignGroup(Long courseId, Long group);
-
-
+    void assignGroup(Long courseId, Long groupId);
 }

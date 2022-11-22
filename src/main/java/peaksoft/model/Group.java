@@ -5,11 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.*;
-import static javax.persistence.CascadeType.DETACH;
 
 @Getter
 @Setter
@@ -17,47 +17,41 @@ import static javax.persistence.CascadeType.DETACH;
 @Entity
 @Table(name = "groups")
 public class Group {
-
     @Id
-    @SequenceGenerator(name = "group_seq", sequenceName = "group_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "group_seq")
+    @SequenceGenerator(name = "group_seq", sequenceName = "group_seq", allocationSize = 1)
     private Long id;
 
-    @Column(length = 100000,name = "group_name")
+    @Column(length = 100000, name = "group_name")
     private String groupName;
 
-    @Column(length = 100000,name = "dare_of_start")
+    @Column(name = "date_of_start")
     private String dateOfStart;
 
-    @Column(length = 100000,name = "image")
+    @Column(length = 100000, name = "image")
     private String image;
 
-
-    @ManyToMany(cascade = {PERSIST,MERGE,REFRESH,DETACH},fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "groups")
     private List<Course> courses;
 
-    public void addCourses(Course course){
+    public void addCourse(Course course){
         if (courses==null){
             courses=new ArrayList<>();
         }
         courses.add(course);
     }
-    @ManyToOne
-    private Company company;
 
-    /*@OneToMany(cascade = {ALL},fetch = FetchType.LAZY,mappedBy = "groups")
+    /*@OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "groups")
     private List<Student> students;
 
-    public void addStudents(Student student){
+    public void addStudent(Student student){
         if (students==null){
             students=new ArrayList<>();
         }
         students.add(student);
+        this.getCompany().plusStudent();
     }*/
 
-    public Group(String groupName, String dateOfStart, String image) {
-        this.groupName = groupName;
-        this.dateOfStart = dateOfStart;
-        this.image = image;
-    }
+    @ManyToOne(cascade = {MERGE, PERSIST, DETACH, REFRESH}, fetch = FetchType.EAGER)
+    private Company company;
 }

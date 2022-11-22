@@ -20,42 +20,36 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<Group> getAllGroup(Long id) {
-        System.out.println("getAllGroupService");
         return groupRepository.getAllGroup(id);
     }
 
     @Override
     public List<Group> getAllGroupsByCourseId(Long courseId) {
-        System.out.println("getAllGroupsByCourseId");
         return groupRepository.getAllGroupsByCourseId(courseId);
     }
 
     @Override
     public void addGroup(Long id, Group group) {
-        System.out.println("addGroupService");
         groupRepository.addGroup(id,group);
     }
 
     @Override
     public Group getGroupById(Long id) {
-        System.out.println("getGroupByIdService");
         return groupRepository.getGroupById(id);
     }
 
     @Override
     public void updateGroup(Group group, Long id) {
-        System.out.println("updateGroupService");
         groupRepository.updateGroup(group,id);
     }
 
     @Override
     public void deleteGroup(Long id) {
-        System.out.println("deleteGroupService");
         groupRepository.deleteGroup(id);
     }
 
     @Override
-    public void assignGroup(Long courseId, Long group) {
-        groupRepository.assignGroup(courseId,group);
+    public void assignGroup(Long courseId, Long groupId) {
+        groupRepository.assignGroup(courseId, groupId);
     }
 }

@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import peaksoft.model.Course;
-
 import peaksoft.model.Group;
 import peaksoft.service.CompanyService;
 import peaksoft.service.CourseService;
 import peaksoft.service.GroupService;
-
 
 import javax.validation.Valid;
 
@@ -26,7 +24,7 @@ public class CourseController {
     private final GroupService groupService;
 
     @Autowired
-    public CourseController(CompanyService companyService, CourseService courseService,GroupService groupService) {
+    public CourseController(CompanyService companyService, CourseService courseService, GroupService groupService) {
         this.companyService = companyService;
         this.courseService = courseService;
         this.groupService = groupService;
@@ -36,7 +34,7 @@ public class CourseController {
     public String getAllCourses(@PathVariable Long id, Model model,
                                 @ModelAttribute("group") Group group) {
         model.addAttribute("courses", courseService.getAllCourses(id));
-       /* model.addAttribute("groups", groupService.getAllGroup(id));*/
+        model.addAttribute("groups", groupService.getAllGroup(id));
         model.addAttribute("companyId",id);
         return "/course/courses";
     }
@@ -84,7 +82,7 @@ public class CourseController {
     private String assignGroup(@PathVariable("companyId") Long companyId,
                                @PathVariable("courseId") Long courseId,
                                @ModelAttribute("group") Group group) {
-       groupService.assignGroup(courseId, group.getId());
+        groupService.assignGroup(courseId, group.getId());
         return "redirect:/courses/" + companyId;
     }
 }

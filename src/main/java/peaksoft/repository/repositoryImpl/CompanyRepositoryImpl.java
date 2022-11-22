@@ -19,10 +19,20 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     @Override
     @Transactional
     public List<Company> getAllCompanies() {
-
-        return entityManager.createQuery("select c from  Company c ", Company.class)
-                .getResultList();
+        return entityManager.createQuery("select c from Company c", Company.class).getResultList();
     }
+
+//    @Override
+//    public int countStudent(Long id) {
+//        Company company = entityManager.find(Company.class, id);
+//        int count = 0;
+//            for (Group g: company.getGroups()) {
+//                for (Student s: g.getStudents()) {
+//                    count++;
+//                }
+//            }
+//        return count;
+//    }
 
     @Override
     @Transactional

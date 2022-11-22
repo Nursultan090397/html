@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import peaksoft.model.Course;
 import peaksoft.model.Group;
 import peaksoft.service.GroupService;
 
@@ -47,7 +46,7 @@ public class GroupController {
         Group group = groupService.getGroupById(id);
         model.addAttribute("group", group);
         model.addAttribute("companyId", group.getCompany().getId());
-        return "/group/update_group";
+        return "/group/updateGroup";
     }
 
     @PostMapping("/{companyId}/{id}/saveUpdateGroup")
@@ -63,7 +62,7 @@ public class GroupController {
         Group group = groupService.getGroupById(id);
         model.addAttribute("group", group);
         model.addAttribute("courseId", courseId);
-        return "/group/update_group";
+        return "/group/updateGroup";
     }
 
     @PostMapping("/{courseId}/{id}/saveUpdateGroupByCourseId")

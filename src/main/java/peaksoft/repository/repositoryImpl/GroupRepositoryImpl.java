@@ -1,8 +1,10 @@
 package peaksoft.repository.repositoryImpl;
 
 import org.springframework.stereotype.Repository;
+import peaksoft.model.Company;
 import peaksoft.model.Course;
 import peaksoft.model.Group;
+import peaksoft.model.Instructor;
 import peaksoft.repository.GroupRepository;
 
 import javax.persistence.EntityManager;
@@ -19,7 +21,6 @@ public class GroupRepositoryImpl implements GroupRepository {
 
     @Override
     public List<Group> getAllGroup(Long id) {
-        System.out.println("getAllGroupRepository");
         return entityManager.createQuery("select g from Group g where g.company.id = :id", Group.class).setParameter("id", id).getResultList();
     }
 
@@ -29,27 +30,23 @@ public class GroupRepositoryImpl implements GroupRepository {
         return groupList;
     }
 
-
     @Override
-    public void addGroup(Long id, Group group) {
-        System.out.println("addGroupRepository");
-        Course course=entityManager.find(Course.class,id);
-        course.addGroups(group);
-        group.addCourses(course);
+    public void addGroup(Long id, Group group){
+        Company company = entityManager.find(Company.class,id);
+        company.addGroup(group);
+        group.setCompany(company);
         entityManager.merge(group);
     }
 
 
     @Override
     public Group getGroupById(Long id) {
-        System.out.println("getGroupByIdRepository");
         return entityManager.find(Group.class, id);
     }
 
     @Override
     public void updateGroup(Group group, Long id) {
-        System.out.println("updateGroupRepository");
-        Group group1 = entityManager.find(Group.class,id);
+        Group group1 = getGroupById(id);
         group1.setGroupName(group.getGroupName());
         group1.setDateOfStart(group.getDateOfStart());
         group1.setImage(group.getImage());
@@ -58,16 +55,16 @@ public class GroupRepositoryImpl implements GroupRepository {
 
     @Override
     public void deleteGroup(Long id) {
-        System.out.println("deleteGroupRepository");
-        entityManager.remove(entityManager.find(Group.class, id));
+        Group group = entityManager.find(Group.class, id);
+        entityManager.remove(group);
     }
 
     @Override
     public void assignGroup(Long courseId, Long groupId) {
         Group group = entityManager.find(Group.class, groupId);
         Course course = entityManager.find(Course.class, courseId);
-        group.addCourses(course);
-        course.addGroups(group);
+        group.addCourse(course);
+        course.addGroup(group);
         entityManager.merge(group);
         entityManager.merge(course);
     }

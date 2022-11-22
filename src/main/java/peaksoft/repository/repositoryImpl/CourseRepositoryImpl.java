@@ -3,7 +3,7 @@ package peaksoft.repository.repositoryImpl;
 import org.springframework.stereotype.Repository;
 import peaksoft.model.Company;
 import peaksoft.model.Course;
-
+import peaksoft.model.Instructor;
 import peaksoft.repository.CourseRepository;
 
 import javax.persistence.EntityManager;
@@ -40,6 +40,7 @@ public class CourseRepositoryImpl implements CourseRepository {
     public void updateCourse(Course course, Long id) {
         Course course1 = entityManager.find(Course.class,id);
         course1.setCourseName(course.getCourseName());
+        course1.setDescription(course.getDescription());
         course1.setDuration(course.getDuration());
         entityManager.merge(course1);
     }
