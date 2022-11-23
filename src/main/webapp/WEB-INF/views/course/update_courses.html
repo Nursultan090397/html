@@ -10,17 +10,21 @@
 <body>
 <form
         th:action="@{/{companyId}/{id}/saveUpdateCourse(id=${course.id}, companyId=${companyId})}"
-        th:object="${course}"
->
+        th:object="${course}"style=" background:#253446;width: 200px; border-radius:5px;margin: 50px 250px;height: 200px;
+            border: 1px solid black;padding-top: 25px;padding-left: 10px;font-size: 10px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+
 
     <input type="hidden" name="id" th:field="*{id}">
-    <input type="text" name="courseName" th:field="*{courseName}" placeholder="Course Name" required>
+    <div style="display:flex ;flex-direction: column;justify-content: space-between;height: 25%;">
+
+    <input style=" background: none; color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white; "type="text" name="courseName" th:field="*{courseName}" placeholder="Course Name">
+    </div>
+    <input style=" background: none; color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white; "type="text" name="duration" th:field="*{duration}" placeholder="Duration">
     <br><br>
-    <input type="text" name="duration" th:field="*{duration}" placeholder="Duration" required>
+    <input style=" background: none; color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white; "type="text" name="duration" th:field="*{description}" placeholder="Description">
     <br><br>
-    <input type="text" name="duration" th:field="*{description}" placeholder="Description" required>
-    <br><br>
-    <input type="submit" value="Add">
+        <button style="margin-top: 30px;border: none;width: 90%;border-radius: 20px; background: #F8DB57;color: black; "type="submit" >Add</button>
 
 </form>
 </body>

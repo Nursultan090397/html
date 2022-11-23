@@ -16,12 +16,12 @@
         color: white;
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
-        font-size: 20px;
+        font-size: 15px;
     }
     table {
         border: none;
         background: #2c3844;
-        padding: 3px;
+        padding: 9px;
         width: 70%;
     }
     td {
@@ -64,28 +64,30 @@
     <thead class="table-dark">
     <tr>
         <th scope="colgroup">Id</th>
-        <th scope="col">Lesson name</th>
-        <th scope="col">Tasks</th>
+        <th scope="col">Student name</th>
+        <th scope="col">lastName</th>
+        <th scope="col">email</th>
+        <th scope="col">phoneNumber</th>
+        <th scope="col">studyFormat</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody class="table-success">
-    <tr th:each="lesson: ${lessons}">
-        <td th:text="${lesson.id}"></td>
-        <td th:text="${lesson.lessonName}"></td>
+    <tr th:each="student: ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.phoneNumber}"></td>
+        <td th:text="${student.studyFormat}"></td>
 
-        <td><a th:href="@{/tasks/{id}(id=${lesson.id})}">
-            Tasks
+        <td><a th:href="@{/updateStudent/{id}(id=${student.id})}">
+           Update
         </a>
         </td>
 
-        <td><a th:href="@{/updateLesson/{id}(id=${lesson.id})}">
-            Update
-        </a>
-        </td>
-
-        <td><a th:href="@{/{courseId}/{id}/deleteLesson(courseId=${courseId}, id=${lesson.id})}">
+        <td><a th:href="@{/{groupId}/{id}/deleteStudent(groupId=${groupId}, id=${student.id})}">
             Delete
         </a>
         </td>
@@ -94,11 +96,12 @@
 </table>
 <br><br><br><br>
 <div style="text-align: center">
-    <a th:href="@{/lessons/{id}/addLesson(id=${courseId})}">
-        <button class="submit"
-                type="submit"
-                onclick="window.location.href = 'addLesson'"> Add Lesson </button>
+    <a th:href="@{/{groupId}/addStudent(groupId=${groupId})}">
 
+        <button
+                class="submit"
+                type="submit"
+                onclick="window.location.href = 'addStudent'"> Add Student </button>
     </a>
 </div>
 </body>

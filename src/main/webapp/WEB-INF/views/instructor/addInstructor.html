@@ -26,25 +26,27 @@
             action="#"
             th:action="@{/{id}/saveInstructors(id=${courseId})}"
             th:object="${instructor}"
-            method="POST">
+            method="POST"style=" background:#253446;width: 300px; border-radius:10px;margin: 100px 500px;height: 300px;
+            border: 1px solid black;padding-top: 50px;padding-left: 25px;font-size: 15px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
 
         <input type="hidden" name="id" th:field="*{id}">
-        <input type="text" name="firstName" th:field="*{firstName}" placeholder="Instructor name" required>
-        <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</div>
-        <br><br>
-        <input type="text" name="lastName" th:field="*{lastName}" placeholder="Last name" required>
+        <div style="display:flex ;flex-direction: column;justify-content: space-between;height: 25%;">
+        <input style=" background: none;color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white;"type="text" name="firstName" th:field="*{firstName}" placeholder="Instructor name" required>
+        </div>
+        <input style=" background: none;color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white;"type="text" name="lastName" th:field="*{lastName}" placeholder="Last name" required>
         <div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</div>
         <br><br>
-        <input type="email" name="email" th:field="*{email}" placeholder="email" required>
+        <input style=" background: none;color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white;"type="email" name="email" th:field="*{email}" placeholder="email" required>
         <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
         <br><br>
-        <input type="number" name="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone number" required>
+        <input style=" background: none;color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white;"type="number" name="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone number" required>
         <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Name Error</div>
         <br><br>
-        <input type="text" name="specialization" th:field="*{specialization}" placeholder="Specialization" required>
+        <input style=" background: none;color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white;"type="text" name="specialization" th:field="*{specialization}" placeholder="Specialization" required>
         <div style="color: red" th:if="${#fields.hasErrors('specialization')}" th:errors="*{specialization}">Name Error</div>
         <br><br>
-        <input type="submit" value="Add">
+        <button style="margin-top: 30px;border: none;width: 90%;border-radius: 20px; background: #F8DB57;color: black;" type="submit" >Add</button>
 
     </form>
 </div>

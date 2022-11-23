@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Students</title>
+    <title>Instructors</title>
     <style>
     body {
         padding-top: 200px;
@@ -16,7 +16,7 @@
         color: white;
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
-        font-size: 20px;
+        font-size: 15px;
     }
     table {
         border: none;
@@ -64,40 +64,41 @@
     <thead class="table-dark">
     <tr>
         <th scope="colgroup">Id</th>
-        <th scope="col">Lesson name</th>
-        <th scope="col">Tasks</th>
+        <th scope="col">Task name</th>
+        <th scope="col">Task text</th>
+        <th scope="col">deadline</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody class="table-success">
-    <tr th:each="lesson: ${lessons}">
-        <td th:text="${lesson.id}"></td>
-        <td th:text="${lesson.lessonName}"></td>
+    <tr th:each="task: ${tasks}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.taskName}"></td>
+        <td th:text="${task.taskText}"></td>
 
-        <td><a th:href="@{/tasks/{id}(id=${lesson.id})}">
-            Tasks
-        </a>
-        </td>
+        <td th:text="${task.deadLine}"></td>
 
-        <td><a th:href="@{/updateLesson/{id}(id=${lesson.id})}">
+        <td><a th:href="@{/updateTask/{id}(id=${task.id})}">
             Update
         </a>
         </td>
 
-        <td><a th:href="@{/{courseId}/{id}/deleteLesson(courseId=${courseId}, id=${lesson.id})}">
+        <td><a th:href="@{/{lessonId}/{id}/deleteTask(lessonId=${lessonId}, id=${task.id})}">
             Delete
         </a>
         </td>
+
     </tr>
     </tbody>
 </table>
 <br><br><br><br>
 <div style="text-align: center">
-    <a th:href="@{/lessons/{id}/addLesson(id=${courseId})}">
-        <button class="submit"
+    <a th:href="@{/tasks/{id}/addTask(id=${lessonId})}">
+        <button
+                class="submit"
                 type="submit"
-                onclick="window.location.href = 'addLesson'"> Add Lesson </button>
+                onclick="window.location.href = 'addStudent'"> Add Task </button>
 
     </a>
 </div>

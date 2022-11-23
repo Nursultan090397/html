@@ -11,16 +11,19 @@
 <form
         th:action="@{/{companyId}/{id}/saveUpdateGroup(id=${group.id}, companyId=${companyId})}"
         th:object="${group}"
-        method="post">
+        method="post"style=" background:#253446;width: 300px; border-radius:10px;margin: 100px 500px;height: 300px;
+            border: 1px solid black;padding-top: 50px;padding-left: 25px;font-size: 15px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
 
     <input type="hidden" name="id" th:field="*{id}">
-    <input type="text" name="groupName" th:field="*{groupName}" placeholder="Group Name" required>
+    <div style="display:flex ;flex-direction: column;justify-content: space-between;height: 25%;">
+    <input style=" background: none; color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white; "type="text" name="groupName" th:field="*{groupName}" placeholder="Group Name" required>
+    </div>
+    <input style=" background: none; color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white; "type="text" name="dateOfStart" th:field="*{dateOfStart}" placeholder="date of start" required>
     <br><br>
-    <input type="text" name="dateOfStart" th:field="*{dateOfStart}" placeholder="date of start" required>
+    <input style=" background: none; color: white; width: 90%;outline: none;border:none;border-bottom: 1px solid white; "type="text" name="image" th:field="*{image}" placeholder="image" required>
     <br><br>
-    <input type="text" name="image" th:field="*{image}" placeholder="image" required>
-    <br><br>
-    <input type="submit" value="Add">
+    <button style="margin-top: 30px;border: none;width: 90%;border-radius: 20px; background: #F8DB57;color: black; "type="submit" >Add</button>
 
 </form>
 </body>

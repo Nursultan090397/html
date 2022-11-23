@@ -27,7 +27,7 @@ public class Lesson {
     @ManyToOne(cascade = {MERGE,DETACH,REFRESH,PERSIST}, fetch = FetchType.EAGER)
     private Course course;
 
-    /*@OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "lesson")
+    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "lesson")
     private List<Task> tasks;
 
     public void addTask(Task task){
@@ -35,6 +35,6 @@ public class Lesson {
             tasks=new ArrayList<>();
         }
         tasks.add(task);
-    }*/
+    }
 
 }

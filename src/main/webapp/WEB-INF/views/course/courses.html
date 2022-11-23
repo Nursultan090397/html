@@ -25,6 +25,60 @@
         table, th, td {
             border: 1px solid black;
             padding: 3px;
+        }-->
+        body {
+            padding-top: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+            font-size: 15px;
+        }
+        table {
+            border: none;
+            background: #2c3844;
+            padding: 3px;
+            width: 70%;
+        }
+        td {
+            border:none;
+            background: #333;
+            text-align: center;
+            padding: 10px;
+        }
+
+        thread,
+        tfoot {
+            background-color: #333;
+            color: #fff;
+        }
+        a {
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+            font-size: 12px;
+            background: #4a918f;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 80%;
+            padding: 2px;
+
+
+        }
+        .submit {
+            border: none;
+            color: #2c3844;
+            background: #4a918f;
+            margin-top: 50px;
+            padding: 10px 50px;
+            border-radius: 5px;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+            font-size: 15px;
         }
     </style>
 </head>
@@ -62,32 +116,33 @@
                             th:value="${group.id}"
                             th:text="${group.groupName}"></option>
                 </select>
+
                 <input  type="submit" value="submit"/>
             </form>
         </td>
 
         <td><a th:href="@{/groups/{id}(id=${course.getId()})}">
-            <button>Groups</button>
+            Groups
         </a>
         </td>
 
         <td><a th:href="@{/instructors/{id}(id=${course.getId()})}">
-            <button>Instructor</button>
+            Instructor
         </a>
         </td>
 
         <td><a th:href="@{/lessons/{id}(id=${course.getId()})}">
-            <button>Lesson</button>
+            Lesson
         </a>
         </td>
 
         <td><a th:href="@{/update/{id}(id=${course.id})}">
-            <button>Update</button>
+           Update
         </a>
         </td>
         <td><a
                 th:href="@{/{companyId}/{id}/deleteCourse(id=${course.id},companyId=${companyId})}">
-            <button>Delete</button>
+            Delete
         </a>
         </td>
     </tr>
@@ -96,7 +151,12 @@
 <br><br><br><br>
 <div style="text-align: center">
     <a th:href="@{/courses/{id}/addCourse(id=${companyId})}">
-        <button style="font-size: 25px;"> Add Course </button>
+        <button class="submit"
+                type="submit"
+                onclick="window.location.href = 'addCourse'">
+                 Add Course </button>
+
+
     </a>
 </div>
 <table class="table table-bordered">
@@ -119,16 +179,16 @@
         <td th:text="${group.image}"></td>
 
         <td><a th:href="@{/students/{id}(id=${group.getId()})}">
-            <button>Student</button>
+            Student
         </a>
         </td>
 
         <td><a th:href="@{/updateGroup/{id}(id=${group.id})}">
-            <button>Update</button>
+            Update
         </a>
         </td>
         <td><a th:href="@{/{companyId}/{id}/deleteGroup(id=${group.id},companyId=${companyId})}">
-            <button>Delete</button>
+            Delete
         </a>
         </td>
     </tr>
@@ -137,8 +197,18 @@
 <br><br><br><br>
 <div style="text-align: center">
     <a th:href="@{/groups/{id}/addGroup(id=${companyId})}">
-        <button style="font-size: 25px;"> Add Group </button>
+        <button class="submit"
+                type="submit"
+                onclick="window.location.href = 'addGroup'">
+                 Add Group </button>
     </a>
 </div>
 </body>
 </html>
+
+
+<!--
+<button class="submit"
+        type="submit"
+        onclick="window.location.href"
+        style="font-size: 25px;"> Add Group </button>-->

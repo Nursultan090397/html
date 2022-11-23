@@ -3,10 +3,8 @@ package peaksoft.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import static javax.persistence.CascadeType.*;
@@ -42,9 +40,9 @@ public class Instructor {
     @NotNull(message = "Instructor specialization can't be null")
     private String specialization;
 
-    /*private int students = 0;
+    private int students = 0;
 
-    public void plusStudent(Course course1){
+    public void dobStudent(Course course1){
         for (Group group : course1.getGroups()) {
             for (Student student: group.getStudents()) {
                 students++;
@@ -59,7 +57,6 @@ public class Instructor {
     public void minus(){
         students--;
     }
-*/
     @ManyToOne(cascade = {MERGE,DETACH, REFRESH,PERSIST}, fetch = FetchType.EAGER)
     private Course course;
 }

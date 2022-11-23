@@ -5,10 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,20 +55,20 @@ public class Course {
 
     @OneToMany(cascade = {ALL},fetch = LAZY, mappedBy = "course")
     private List<Instructor> instructors;
-    public void addInstructors(Instructor instructor){
-        if (instructors==null){
-            instructors=new ArrayList<>();
-        }
-        instructors.add(instructor);
-    }
-
     /*public void addInstructors(Instructor instructor){
         if (instructors==null){
             instructors=new ArrayList<>();
         }
         instructors.add(instructor);
-        instructor.plusStudent(this);
     }*/
+
+    public void addInstructors(Instructor instructor){
+        if (instructors==null){
+            instructors=new ArrayList<>();
+        }
+        instructors.add(instructor);
+        instructor.dobStudent(this);
+    }
 
     @OneToMany(cascade = {DETACH, PERSIST, REFRESH, MERGE}, fetch = LAZY, mappedBy = "course")
     private List<Lesson> lessons;
