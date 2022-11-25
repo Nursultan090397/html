@@ -27,7 +27,7 @@
             padding: 3px;
         }-->
         body {
-            padding-top: 200px;
+            padding-top: 100px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -42,6 +42,7 @@
             background: #2c3844;
             padding: 3px;
             width: 70%;
+            font-size: small;
         }
         td {
             border:none;
@@ -105,8 +106,6 @@
         <td th:text="${course.duration}"></td>
         <td th:text="${course.description}"></td>
 
-
-
         <td>
             <form th:method="POST"
                   th:action="@{/{companyId}/{courseId}/assignGroup(companyId=${companyId},courseId=${course.getId()})}">
@@ -119,12 +118,25 @@
 
                 <input  type="submit" value="submit"/>
             </form>
+
         </td>
 
-        <td><a th:href="@{/groups/{id}(id=${course.getId()})}">
+        <!--<td>
+            <a th:href="@{/groups/{id}(id=${course.getId()})}">
+                <button>group</button>
+            </a>
+        </td>-->
+
+        <td><a th:href="@{/groups/{companyId}/{id}(id=${course.getId()}, companyId=${companyId})}">
             Groups
         </a>
         </td>
+
+
+        <!--<td><a th:href="@{/groups/{id}(id=${course.getId()})}">
+            Groups
+        </a>
+        </td>-->
 
         <td><a th:href="@{/instructors/{id}(id=${course.getId()})}">
             Instructor
@@ -137,7 +149,7 @@
         </td>
 
         <td><a th:href="@{/update/{id}(id=${course.id})}">
-           Update
+            Update
         </a>
         </td>
         <td><a
@@ -154,7 +166,7 @@
         <button class="submit"
                 type="submit"
                 onclick="window.location.href = 'addCourse'">
-                 Add Course </button>
+            Add Course </button>
 
 
     </a>
@@ -200,7 +212,7 @@
         <button class="submit"
                 type="submit"
                 onclick="window.location.href = 'addGroup'">
-                 Add Group </button>
+            Add Group </button>
     </a>
 </div>
 </body>

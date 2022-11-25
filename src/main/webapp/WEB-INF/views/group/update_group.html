@@ -1,3 +1,33 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>update-group</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form-->
+<!--        th:action="@{/{companyId}/{id}/saveUpdateGroup(id=${group.id}, companyId=${companyId})}"-->
+<!--        th:object="${group}"-->
+<!--        method="post">-->
+
+<!--    <input type="hidden" name="id" th:field="*{id}">-->
+<!--    <input type="text" name="groupName" th:field="*{groupName}" placeholder="Group Name" required>-->
+<!--    <br><br>-->
+<!--    <input type="text" name="dateOfStart" th:field="*{dateOfStart}" placeholder="date of start" required>-->
+<!--    <br><br>-->
+<!--    <input type="text" name="image" th:field="*{image}" placeholder="image" required>-->
+<!--    <br><br>-->
+<!--    <input type="submit" value="Add">-->
+
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -19,7 +49,7 @@
         }
 
         /* Full-width input fields */
-        input[type=text], input[type=password], input[type=date] {
+        input[type=text], input[type=password],  input[type=date]{
             width: 100%;
             padding: 15px;
             margin: 5px 0 22px 0;
@@ -75,21 +105,20 @@
 </head>
 <body>
 
-<form action="#"
-      th:action="@{/{id}/saveGroup(id=${companyId})}"
+<form th:action="@{/{companyId}/{id}/saveUpdateGroup(id=${group.id}, companyId=${companyId})}"
       th:object="${group}"
       method="post">
     <div class="container">
         <hr>
         <input type="hidden" name="id" th:field="*{id}">
         <label for="email"><b>Group Name</b></label>
-        <input type="text" placeholder="Enter group name" th:field="*{groupName}" name="email" id="email" required>
+        <input type="text" placeholder="Enter company name" th:field="*{groupName}" name="email" id="email" required>
         <label for="psw"><b>Date of start</b></label>
-        <input type="date" placeholder="Choose date" th:field="*{dateOfStart}" name="psw" id="psw" required>
-        <label for="psw"><b>Image</b></label>
-        <input type="text" placeholder="Enter image" th:field="*{image}" name="psw" id="psw1" required>
+        <input type="date" placeholder="Enter date of start" th:field="*{dateOfStart}" name="psw" id="psw" required>
+        <label for="email"><b>Description</b></label>
+        <input type="text" placeholder="Enter image" th:field="*{image}" name="email" id="email1" required>
         <hr>
-        <button type="submit" class="registerbtn">Save group</button>
+        <button type="submit" class="registerbtn">Update group</button>
     </div>
 </form>
 

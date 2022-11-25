@@ -27,6 +27,10 @@ public class GroupServiceImpl implements GroupService {
     public List<Group> getAllGroupsByCourseId(Long courseId) {
         return groupRepository.getAllGroupsByCourseId(courseId);
     }
+    @Override
+    public void addGroupByCourseId(Long id, Long courseId, Group group) {
+        groupRepository.addGroupByCourseId(id, courseId, group);
+    }
 
     @Override
     public void addGroup(Long id, Group group) {

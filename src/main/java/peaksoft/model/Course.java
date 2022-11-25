@@ -28,22 +28,23 @@ public class Course {
     @Column(length = 100000, name = "course_name")
     private String courseName;
 
-    @Min(value = 1, message = "course duration should be more than 1 month")
+    @Min(value = 1, message = "продолжительность курса должна быть более 1 месяца")
     private int duration;
 
-    @NotNull(message = "Course description cant be null")
+    @NotNull(message = "Описание курса не может быть нулевым")
     @Column(length = 100000, name = "description")
     private String description;
 
-    @ManyToOne(cascade = {MERGE, DETACH, REFRESH, PERSIST}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {REFRESH, MERGE, DETACH}, fetch = FetchType.EAGER)
     private Company company;
 
-    @ManyToMany(cascade = {MERGE, DETACH, REFRESH}, fetch = LAZY)
+    @ManyToMany(cascade = {MERGE, REFRESH, DETACH}, fetch = LAZY)
     @JoinTable(
             name = "groups_courses",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "group_id"))
     private List<Group> groups;
+
 
 
     public void addGroup(Group group){
@@ -53,7 +54,7 @@ public class Course {
         groups.add(group);
     }
 
-    @OneToMany(cascade = {ALL},fetch = LAZY, mappedBy = "course")
+    @OneToMany(cascade = {MERGE, REFRESH, DETACH, REMOVE, PERSIST},fetch = LAZY, mappedBy = "course")
     private List<Instructor> instructors;
     /*public void addInstructors(Instructor instructor){
         if (instructors==null){
@@ -70,7 +71,7 @@ public class Course {
         instructor.dobStudent(this);
     }
 
-    @OneToMany(cascade = {DETACH, PERSIST, REFRESH, MERGE}, fetch = LAZY, mappedBy = "course")
+    @OneToMany(cascade = {MERGE, REFRESH, DETACH, REMOVE, PERSIST}, fetch = LAZY, mappedBy = "course")
     private List<Lesson> lessons;
 
     public void addLesson(Lesson lesson){
@@ -79,7 +80,6 @@ public class Course {
         }
         lessons.add(lesson);
     }
-
 
 
 }

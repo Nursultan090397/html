@@ -1,4 +1,5 @@
 package peaksoft.api;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import peaksoft.service.CourseService;
 import peaksoft.service.GroupService;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 
 @Controller
@@ -35,7 +37,7 @@ public class CourseController {
                                 @ModelAttribute("group") Group group) {
         model.addAttribute("courses", courseService.getAllCourses(id));
         model.addAttribute("groups", groupService.getAllGroup(id));
-        model.addAttribute("companyId",id);
+        model.addAttribute("companyId", id);
         return "/course/courses";
     }
 
@@ -47,13 +49,10 @@ public class CourseController {
     }
 
     @PostMapping("/{id}/saveCourse")
-    public String saveCourse(@ModelAttribute("course") @Valid Course course, BindingResult bindingResult,
-                             @PathVariable Long id) {
-        if (bindingResult.hasErrors()){
-            return "redirect:/courses/"+id+"/addCourse";
-        }
+    public String saveCourse(@ModelAttribute("course") Course course,
+                             @PathVariable Long id) throws IOException {
         courseService.addCourse(id, course);
-        return "redirect:/courses/"+id;
+        return "redirect:/courses/" + id;
     }
 
     @GetMapping("/update/{id}")
@@ -67,22 +66,24 @@ public class CourseController {
     @GetMapping("/{companyId}/{id}/saveUpdateCourse")
     public String saveUpdateCourse(@PathVariable("companyId") Long companyId,
                                    @PathVariable("id") Long id,
-                                   @ModelAttribute("course") Course course) {
-        courseService.updateCourse(course,id);
-        return "redirect:/courses/"+companyId;
+                                   @ModelAttribute("course") Course course) throws IOException {
+        courseService.updateCourse(course, id);
+        return "redirect:/courses/" + companyId;
     }
 
     @GetMapping("/{companyId}/{id}/deleteCourse")
     public String deleteCourse(@PathVariable("id") Long id, @PathVariable("companyId") Long companyId) {
         courseService.deleteCourse(id);
-        return "redirect:/courses/"+companyId;
+        return "redirect:/courses/" + companyId;
     }
 
-    @PostMapping("{courseId}/{companyId}/assignGroup")
-    private String assignGroup(@PathVariable("companyId") Long companyId,
+    @PostMapping("{companyId}/{courseId}/assignGroup")
+    private String assignGroup(@PathVariable("companyId") Long comId,
                                @PathVariable("courseId") Long courseId,
-                               @ModelAttribute("group") Group group) {
+                               @ModelAttribute("group") Group group)
+            throws IOException {
+        System.out.println(group);
         groupService.assignGroup(courseId, group.getId());
-        return "redirect:/courses/" + companyId;
+        return "redirect:/groups/" + comId+"/"+courseId;
     }
 }

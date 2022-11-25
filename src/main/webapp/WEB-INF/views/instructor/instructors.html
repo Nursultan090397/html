@@ -107,6 +107,16 @@
         Add Instructor
     </button>
 
+        <form    th:href="@{/instructors/{id}/addInstructor(id=${courseId})}" >
+            <button
+                class="submit"
+                type="submit"
+                onclick="window.location.href = 'Back'"
+        >
+            Back
+        </button>
+        </form>
+
      </a>
 </div>
 </body>

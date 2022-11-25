@@ -9,22 +9,23 @@ import peaksoft.model.Company;
 import peaksoft.service.CompanyService;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 public class CompanyController {
 
-    private final CompanyService companyservice;
+    private final CompanyService service;
 
     @Autowired
     public CompanyController(CompanyService companyService) {
-        this.companyservice = companyService;
+        this.service = companyService;
     }
 
 
     @GetMapping("/getAllCompanies")
     public String getCompanies(Model model) {
-        List<Company> companies = companyservice.getAllCompanies();
+        List<Company> companies = service.getAllCompanies();
         model.addAttribute("companies", companies);
         return "/company/all_companies";
     }
@@ -36,41 +37,27 @@ public class CompanyController {
     }
 
     @PostMapping("/saveCompany")
-    public String saveCompany(@ModelAttribute("company") @Valid Company company, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
-            return "/company/addCompany";
-        }
-
-        companyservice.addCompany(company);
+    public String saveCompany(@ModelAttribute("company") Company company) throws IOException {
+        service.addCompany(company);
         return "redirect:/getAllCompanies";
     }
 
-    @GetMapping("updateCompany")
+    @GetMapping("/updateCompany")
     public String updateCompany(@RequestParam("companyId") Long id, Model model) {
-        Company company = companyservice.getCompanyById(id);
+        Company company = service.getCompanyById(id);
         model.addAttribute("company", company);
         return "/company/updateCompany";
     }
 
-    @PostMapping("/updateCompany")
-    public String saveUpdateCompany(@ModelAttribute("company") @Valid Company company, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
-            return "/company/updateCompany";
-        }
-        companyservice.updateCompany(company);
+    @PostMapping("/saveUpdateCompany")
+    public String saveUpdateCompany(@ModelAttribute("company") Company company) throws IOException {
+        service.updateCompany(company);
         return "redirect:/getAllCompanies";
     }
 
     @RequestMapping("/deleteCompany")
     public String deleteCompany(@RequestParam("companyId") Long id) {
-        companyservice.deleteCompany(companyservice.getCompanyById(id));
+        service.deleteCompany(service.getCompanyById(id));
         return "redirect:/getAllCompanies";
     }
-
-//    @GetMapping("/countStudent")
-//    public String countStudent(@RequestParam("companyId") Long id, Model model){
-//        int countOfStudent = service.countStudent(id);
-//        model.addAttribute("count", countOfStudent);
-//        return "redirect:/getAllCompanies";
-//    }
 }

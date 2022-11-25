@@ -38,7 +38,7 @@ public class InstructorRepositoryImpl implements InstructorRepository {
         course.addInstructors(instructor);
         instructor.setCourse(course);
         entityManager.merge(course);
-        /*instructor.plusStudent(course);*/
+        instructor.dobStudent(course);
     }
 
     @Override
