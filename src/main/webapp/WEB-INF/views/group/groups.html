@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
@@ -36,7 +36,6 @@
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
     sans-serif;
     font-size: 12px;
-    background: #4a918f;
     border-radius: 5px;
     border: none;
     color: white;
@@ -101,5 +100,118 @@
     <button style="font-size: 25px;"> Add Group </button>
   </a>
 </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Companies</title>
+    <style>
+        body {
+            padding-top: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+            font-size: 15px;
+        }
+        table {
+            border: none;
+            background: #2c3844;
+            padding: 3px;
+            width: 70%;
+            /*font-size: small;*/
+        }
+        td {
+            border:none;
+            background: #333;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /*thread,
+        tfoot {
+            background-color: #333;
+            color: #fff;
+        }*/
+        a {
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+            font-size: 12px;
+            background: #4a918f;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 80%;
+            padding: 2px;
+
+
+        }
+        .submit {
+            border: none;
+            color: #2c3844;
+            background: #4a918f;
+            margin-top: 50px;
+            padding: 10px 50px;
+            border-radius: 5px;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+            sans-serif;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+<table class="table table-bordered">
+    <thead class="table-dark">
+    <tr>
+      <th scope="colgroup">Id</th>
+      <th scope="col">Group name</th>
+      <th scope="col">Date of start</th>
+      <th scope="col">image</th>
+      <th scope="col">Student</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody class="table-success">
+      <tr th:each="group: ${groups}">
+        <td th:text="${group.id}"></td>
+        <td th:text="${group.groupName}"></td>
+        <td th:text="${group.dateOfStart}"></td>
+        <td th:text="${group.image}"></td>
+    
+
+        <td>
+          
+          <a th:href="@{/students/{id}(id=${group.getId()})}">
+          Student
+        </a>
+        </td>
+    
+        <td><a th:href="@{/updateGroup/{id}(id=${group.id})}">
+          Update
+        </a>
+        </td>
+        <td><a th:href="@{/{companyId}/{id}/deleteGroup(id=${group.id},companyId=${companyId})}">
+          Delete
+        </a>
+        </td>
+      </tr>
+      </tbody>
+</table>
+
+<button
+        class="submit"
+        type="submit"
+        onclick="window.location.href = 'addCompany'"
+>
+    Add company
+</button>
 </body>
 </html>
